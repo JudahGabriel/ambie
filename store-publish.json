@@ -1,0 +1,39 @@
+{
+    "apps": [
+        {
+            "name": "Ambie",
+            "icon": "/raw/main/images/logo_transparent.png",
+            "description": "/blob/main/README.md",
+            "categories": [
+                "productivity",
+                "utilities"
+            ],
+            "platform": "windows",
+            "architectures": [
+                "x64",
+                "arm64"
+            ],
+            "type": "exe",
+            "file": "/releases/download/{{tag}}/Ambie_{{tag}}_x64_ARM64.msixbundle",
+            "screenshots": [
+                {
+                    "url": "releases/download/{{tag}}/screenshot-1.png",
+                    "caption": "Relax with Ambie's large catalogue of sounds to create your favourite experience"
+                },
+                {
+                    "url": "releases/download/{{tag}}/screenshot-2.png",
+                    "caption": "Use Ambie's built-in Pomodoro timer to help you focus"
+                },
+                {
+                    "url": "releases/download/{{tag}}/screenshot-3.png",
+                    "caption": "Practice selfcare with meditation guides"
+                }
+            ],
+            "releaseNotes": "/releases/tag/{{tag}}",
+            "privacyPolicyUrl": "/blob/main/privacypolicy.md",
+            "publisherName": "Jenius Apps",
+            "publisherUrl": "https://ambieapp.com",
+            "publisherContact": "ambie_app@outlook.com"
+        }
+    ]
+}
