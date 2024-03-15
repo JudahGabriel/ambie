@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "Ambie",
-            "icon": "/raw/main/images/logo_transparent.png",
+            "iconUri": "/raw/main/images/logo_transparent.png",
             "description": "/blob/main/README.md",
             "categories": [
                 "productivity",
