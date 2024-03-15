@@ -2,8 +2,8 @@
     "apps": [
         {
             "name": "Ambie",
-            "iconUri": "/raw/main/images/logo_transparent.png",
-            "description": "/blob/main/README.md",
+            "iconUri": "https://raw.githubusercontent.com/JudahGabriel/ambie/main/images/logo_transparent.png",
+            "description": "Ambie is an app that plays white noise and nature sounds to help you focus, sleep, and unwind. For many people, having background noise while working on a task helps with concentration. Ambie has a good starting selection of built-in sounds such as rain and beach waves that help you. These can also be used to help you sleep, relax, and de-stress. For instance, those with tinnitus and anxiety have reached out saying Ambie has helped them. And if you download Ambie from the Microsoft Store, you'll get access to a catalogue of online sounds that you can download to expand your library.",
             "categories": [
                 "productivity",
                 "utilities"
@@ -13,23 +13,23 @@
                 "x64",
                 "arm64"
             ],
-            "type": "exe",
-            "file": "/releases/download/{{tag}}/Ambie_{{tag}}_x64_ARM64.msixbundle",
+            "type": "msixbundle",
+            "file": "https://github.com/JudahGabriel/ambie/releases/download/v4.3.0.0/Ambie_4.3.0.0_x64_ARM64.1.msixbundle",
             "screenshots": [
                 {
-                    "url": "releases/download/{{tag}}/screenshot-1.png",
+                    "url": "https://store-images.s-microsoft.com/image/apps.39021.14461052683240493.274a6984-fc70-4d2e-998c-34fcbc5f4c8e.2db7cf8a-d066-4ce6-81db-dfdedc96e39a",
                     "caption": "Relax with Ambie's large catalogue of sounds to create your favourite experience"
                 },
                 {
-                    "url": "releases/download/{{tag}}/screenshot-2.png",
+                    "url": "https://store-images.s-microsoft.com/image/apps.65442.14461052683240493.274a6984-fc70-4d2e-998c-34fcbc5f4c8e.ed08ebf8-9cb4-44f1-9fb4-179b0e33a6ef",
                     "caption": "Use Ambie's built-in Pomodoro timer to help you focus"
                 },
                 {
-                    "url": "releases/download/{{tag}}/screenshot-3.png",
+                    "url": "https://store-images.s-microsoft.com/image/apps.24658.14461052683240493.274a6984-fc70-4d2e-998c-34fcbc5f4c8e.855a8fb3-8bbe-4e9a-a7c1-f9507ae30cd9",
                     "caption": "Practice selfcare with meditation guides"
                 }
             ],
-            "releaseNotes": "/releases/tag/{{tag}}",
+            "releaseNotes": "This release contains Ambie 4.3, featuring self-updating features and a sleep timer!",
             "privacyPolicyUrl": "/blob/main/privacypolicy.md",
             "publisherName": "Jenius Apps",
             "publisherUrl": "https://ambieapp.com",
