@@ -3,6 +3,7 @@ using AmbientSounds.Controls;
 using AmbientSounds.Converters;
 using AmbientSounds.ViewModels;
 using CommunityToolkit.Diagnostics;
+using JeniusApps.Common.Settings;
 using JeniusApps.Common.Tools;
 using System;
 using System.Collections.Generic;
@@ -51,8 +52,8 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new TutorialDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme()
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
         };
 
         await dialog.ShowAsync();
@@ -70,8 +71,8 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.MissingSoundsTitle,
             PrimaryButtonText = Strings.Resources.DownloadText,
             CloseButtonText = Strings.Resources.CancelText,
@@ -94,7 +95,8 @@ public class DialogService : IDialogService
         bool enterClicked = false;
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.RenameText,
             CloseButtonText = Strings.Resources.CancelText,
             PrimaryButtonText = Strings.Resources.RenameText,
@@ -109,7 +111,7 @@ public class DialogService : IDialogService
     }
 
     /// <inheritdoc/>
-    public async Task OpenPremiumAsync()
+    public async Task OpenPremiumAsync(bool launchPromoCodeDirectly = false)
     {
         if (IsDialogOpen || _systemInfoProvider.IsCompact())
         {
@@ -117,15 +119,13 @@ public class DialogService : IDialogService
         }
 
         IsDialogOpen = true;
-        var content = new PremiumControl();
-        var dialog = new NoPaddingDialog()
+        var dialog = new PremiumDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
-            Content = content
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
+            LaunchPromoCodeDirectly = launchPromoCodeDirectly
         };
 
-        content.CloseRequested += (s, e) => dialog.Hide();
         await dialog.ShowAsync();
         IsDialogOpen = false;
     }
@@ -141,10 +141,10 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.ScreensaverCatalogue,
             CloseButtonText = Strings.Resources.CloseText,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
             Content = new VideosMenu()
         };
 
@@ -163,8 +163,8 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new InterruptionDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
         };
 
         var result = await dialog.ShowAsync();
@@ -186,10 +186,10 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.History,
             CloseButtonText = Strings.Resources.CloseText,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
             Content = new FocusHistoryDetails(historyViewModel)
         };
 
@@ -210,9 +210,9 @@ public class DialogService : IDialogService
         IsDialogOpen = true;
         var dialog = new EditTextDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Text = prepopulatedText,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
         };
 
         if (maxSize.HasValue)
@@ -240,8 +240,8 @@ public class DialogService : IDialogService
 
         var dialog = new ShareDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
         };
 
         _ = dialog.InitializeAsync(soundIds);
@@ -263,10 +263,10 @@ public class DialogService : IDialogService
         _ = content.InitializeAsync();
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.MissingSoundsTitle,
             CloseButtonText = Strings.Resources.CloseText,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
             Content = content
         };
 
@@ -288,16 +288,54 @@ public class DialogService : IDialogService
 
         var dialog = new ContentDialog()
         {
-            FlowDirection = App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
             Title = Strings.Resources.RecentInterruptionsText,
             CloseButtonText = Strings.Resources.CloseText,
-            RequestedTheme = _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme(),
             Content = content
         };
 
         await dialog.ShowAsync();
         content.Uninitialize();
 
+        IsDialogOpen = false;
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> OpenSoundDialogAsync(OnlineSoundViewModel vm)
+    {
+        if (IsDialogOpen)
+        {
+            return false;
+        }
+
+        IsDialogOpen = true;
+        var dialog = new SoundDownloadDialog(vm)
+        {
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
+        };
+
+        await dialog.ShowAsync();
+        IsDialogOpen = false;
+
+        return dialog.Result;
+    }
+
+    private FlowDirection GetFlowDirection() => App.IsRightToLeftLanguage ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
+    private ElementTheme GetTheme() => _userSettings.Get<string>(UserSettingsConstants.Theme).ToTheme();
+
+    public async Task OpenChannelPageSettingsAsync()
+    {
+        IsDialogOpen = true;
+        var dialog = new ChannelViewerSettingsDialog()
+        {
+            FlowDirection = GetFlowDirection(),
+            RequestedTheme = GetTheme(),
+        };
+
+        await dialog.ShowAsync();
         IsDialogOpen = false;
     }
 }

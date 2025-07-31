@@ -367,15 +367,6 @@
     <value>ご購入ありがとうございます！</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>プレミアムで高品質サウンドを取得する</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>動画スクリーンセーバーをダウンロードする</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>開発をサポートする</value>
-  </data>
   <data name="HelloAgain" xml:space="preserve">
     <value>こんにちは</value>
   </data>
@@ -850,5 +841,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>スリープタイマー</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>アンロック</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>音量を調整する</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>サウンドのダウンロード</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>暗い画面</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>睡眠を助ける</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>スライドショー</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>画像のカルーセル</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>ビデオ</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>ビデオを再生します(可能な場合)</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>新しい音の通知</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>テレメトリー</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>ビデオをダウンロードします。すぐに準備が整います。</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>ビデオのロックを解除する</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>利用できる</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>含ま</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>スライドショー画像</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>動画の背景</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>無料トライアルを開始</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0}無料、そして{1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>お 問い合わせ</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>フィードバック</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>フィードバック、質問、または問題がある場合は、お問い合わせください</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>7日間の無料特典を申請</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>無料トライアルあり</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>最後のチャネルを開く</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>チャンネル</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>全画面表示のビデオやその他のビジュアル コンテンツを表示して、集中力、学習、リラックスを支援します。</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>詳細を表示</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>クロックを有効にする</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>時計に秒を表示する</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>カウントダウンタイマーを有効にする</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>高品質のサウンド、プレミアムビデオ、厳選された瞑想。今後のすべてのコンテンツへのアクセス。Ambie+ですべてをアンロックし、次のお気に入りの雰囲気を見つけてください。</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>同じメリット、月額費用の削減</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>年間プランを入手 - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>コードを入力する</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>プロモーションコードを入力してください</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>コードを使用してAmbie+の割引を解除する</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>最長ストリーク</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>今月の営業時間</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>フォーカス時間</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>合計時間</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>過去 7 日間</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>よく再生される音</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>Ambieをもう少し使って、より多くの統計を表示する</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Ambieでの利用統計を表示する</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>統計</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Windows 通知が Ambie に対して有効になっていることを確認する</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>エネーブル</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>便利なオプション</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>チャンネルを隠す</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>チャンネルを表示</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>カウントダウン</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>何一つ</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>フォーカスタイマーは、アクティブフォーカスセッション中に常に表示されます。</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>時</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>表示モード</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>リラクゼーションタイマー</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>リラクゼーションタイマーを使用して、リラックスしたり、睡眠したり、瞑想したりします。</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>リラクゼーションタイマー情報</value>
   </data>
 </root>

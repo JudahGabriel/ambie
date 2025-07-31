@@ -42,7 +42,8 @@ public partial class OnlineSoundViewModel : ObservableObject
         IAssetLocalizer assetLocalizer,
         IMixMediaPlayerService mixMediaPlayerService,
         IUpdateService updateService,
-        ILocalizer localizer)
+        ILocalizer localizer,
+        IExperimentationService experimentationService)
     {
         _sound = s;
         _downloadManager = downloadManager;
@@ -58,8 +59,12 @@ public partial class OnlineSoundViewModel : ObservableObject
 
         _downloadProgress = new Progress<double>();
     }
-    
+
     public event EventHandler? DownloadCompleted;
+
+    public bool HasSlideshowImages => _sound.ScreensaverImagePaths is { Length: > 0 };
+
+    public bool HasBackgroundVideo => _sound.AssociatedVideoIds is { Count: > 0 };
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanPlay))]
@@ -68,6 +73,8 @@ public partial class OnlineSoundViewModel : ObservableObject
     private UpdateReason _updateReason;
 
     public bool UpdateAvailable => UpdateReason != UpdateReason.None;
+
+    public string DownloadProgressPercent => $"{DownloadProgressValue}%";
 
     public bool CanPlay => UpdateReason == UpdateReason.None 
         && IsInstalled 
@@ -87,7 +94,9 @@ public partial class OnlineSoundViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(DownloadProgressVisible))]
     [NotifyPropertyChangedFor(nameof(DownloadButtonVisible))]
+    [NotifyPropertyChangedFor(nameof(CanPreview))]
     [NotifyPropertyChangedFor(nameof(CanPlay))]
+    [NotifyPropertyChangedFor(nameof(DownloadProgressPercent))]
     private double _downloadProgressValue;
 
     /// <summary>
@@ -108,12 +117,9 @@ public partial class OnlineSoundViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(DownloadButtonVisible))]
     private bool _isOwned;
 
-    private void OnProductPurchased(object sender, string iapId)
+    private async void OnProductPurchased(object sender, string iapId)
     {
-        if (_sound.IsPremium && _sound.IapIds.Contains(iapId))
-        {
-            IsOwned = true;
-        }
+        await UpdateIsOwnedAsync(iapId);
     }
 
     private async void OnSoundDeleted(object sender, string id)
@@ -123,8 +129,7 @@ public partial class OnlineSoundViewModel : ObservableObject
             IsInstalled = await _soundService.IsSoundInstalledAsync(_sound.Id);
             DownloadProgressValue = 0;
 
-            // Note: a non-premium sound is treated as "owned"
-            IsOwned = _sound.IsPremium ? await _iapService.IsAnyOwnedAsync(_sound.IapIds) : true;
+            await UpdateIsOwnedAsync();
         }
     }
 
@@ -149,14 +154,19 @@ public partial class OnlineSoundViewModel : ObservableObject
     public string TelemetryLocation { get; set; } = "catalogue";
 
     /// <summary>
-    /// The sound's attribution.
-    /// </summary>
-    public string? Attribution => _sound.Attribution;
-
-    /// <summary>
     /// Name of the sound.
     /// </summary>
     public string Name => _assetLocalizer.GetLocalName(_sound);
+
+    /// <summary>
+    /// Localized description of the sound.
+    /// </summary>
+    public string Description => _assetLocalizer.GetLocalDescription(_sound);
+
+    /// <summary>
+    /// Returns true if the description is populated.
+    /// </summary>
+    public bool HasDescription => !string.IsNullOrEmpty(Description);
 
     public string ColourHex => _sound.ColourHex;
 
@@ -188,8 +198,9 @@ public partial class OnlineSoundViewModel : ObservableObject
     /// <summary>
     /// Determines if the sound can be previewed.
     /// </summary>
-    public bool CanPreview => 
-        !string.IsNullOrWhiteSpace(_sound.PreviewFilePath) && 
+    public bool CanPreview =>
+        !DownloadProgressVisible &&
+        !string.IsNullOrEmpty(_sound.PreviewFilePath) && 
         Uri.IsWellFormedUriString(_sound.PreviewFilePath, UriKind.Absolute);
 
     /// <summary>
@@ -221,6 +232,11 @@ public partial class OnlineSoundViewModel : ObservableObject
     private void Preview()
     {
         _previewService.Play(_sound.PreviewFilePath);
+        _telemetry.TrackEvent(TelemetryConstants.PreviewPlayed, new Dictionary<string, string>
+        {
+            { "name", _sound.Name },
+            { "isOwned", IsOwned.ToString() },
+        });
     }
 
     [RelayCommand]
@@ -306,18 +322,8 @@ public partial class OnlineSoundViewModel : ObservableObject
         }
 
         // Determine ownership
-        bool isOwned;
-        if (_sound.IsPremium)
-        {
-            isOwned = await _iapService.IsAnyOwnedAsync(_sound.IapIds);
-        }
-        else
-        {
-            // a non premium sound is treated as "owned"
-            isOwned = true;
-        }
+        await UpdateIsOwnedAsync();
 
-        IsOwned = isOwned;
         _loading = false;
         _loadingLock.Release();
     }
@@ -368,8 +374,6 @@ public partial class OnlineSoundViewModel : ObservableObject
         {
             _telemetry.TrackEvent(TelemetryConstants.DownloadClicked, new Dictionary<string, string>
             {
-                { "id", _sound.Id ?? "" },
-                { "location", TelemetryLocation },
                 { "name", _sound.Name }
             });
 
@@ -400,5 +404,27 @@ public partial class OnlineSoundViewModel : ObservableObject
         _iapService.ProductPurchased -= OnProductPurchased;
         _downloadProgress.ProgressChanged -= OnProgressChanged;
         _soundService.LocalSoundDeleted -= OnSoundDeleted;
+    }
+
+    private async Task UpdateIsOwnedAsync(string? newlyPurchasedIapId = null)
+    {
+        if (!_sound.IsPremium)
+        {
+            // a non premium sound is always treated as "owned"
+            IsOwned = true;
+            return;
+        }
+
+        if (newlyPurchasedIapId is { Length: > 0 })
+        {
+            // New IAP was just purchased, so we perform
+            // a local check to see if the sound gets unlocked.
+            IsOwned = _sound.IapIds.Contains(newlyPurchasedIapId) || (newlyPurchasedIapId.ContainsAmbiePlus() && _sound.IapIds.ContainsAmbiePlus());
+        }
+        else
+        {
+            // New IAP is null, meaning that we're just checking if the user already owns the product.
+            IsOwned = await _iapService.IsAnyOwnedAsync(_sound.IapIds);
+        }
     }
 }

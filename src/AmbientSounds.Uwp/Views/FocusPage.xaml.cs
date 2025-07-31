@@ -35,13 +35,10 @@ namespace AmbientSounds.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             var telemetry = App.Services.GetRequiredService<ITelemetry>();
-            telemetry.TrackEvent(TelemetryConstants.PageNavTo, new Dictionary<string, string>
-            {
-                { "name", "focus" }
-            });
+            telemetry.TrackPageView(nameof(FocusPage));
 
             var mainTask = ViewModel.InitializeAsync();
-            await Task.WhenAll(_controlsToInitialize.Select(x => x.InitializeAsync()));
+            await Task.WhenAll(_controlsToInitialize.Select(static x => x.InitializeAsync()));
             await mainTask;
         }
 

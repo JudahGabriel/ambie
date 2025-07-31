@@ -3,13 +3,10 @@ using AmbientSounds.Services;
 using CommunityToolkit.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using JeniusApps.Common.Settings;
 using JeniusApps.Common.Telemetry;
-
-#nullable enable
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AmbientSounds.ViewModels;
 
@@ -30,7 +27,7 @@ public sealed partial class CompactPageViewModel : ObservableObject
         IUserSettings userSettings,
         ICompactNavigator compactNavigator,
         ITelemetry telemetry)
-    {                   
+    {
         Guard.IsNotNull(navigator);
         Guard.IsNotNull(userSettings);
         Guard.IsNotNull(compactNavigator);

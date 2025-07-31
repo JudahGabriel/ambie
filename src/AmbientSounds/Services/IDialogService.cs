@@ -1,9 +1,6 @@
-﻿using AmbientSounds.Models;
-using AmbientSounds.ViewModels;
+﻿using AmbientSounds.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-#nullable enable
 
 namespace AmbientSounds.Services;
 
@@ -13,6 +10,13 @@ namespace AmbientSounds.Services;
 /// </summary>
 public interface IDialogService
 {
+    /// <summary>
+    /// Opens the sound dialog.
+    /// </summary>
+    /// <param name="vm">The online sound to use.</param>
+    /// <returns>True if the primary action was clicked.</returns>
+    Task<bool> OpenSoundDialogAsync(OnlineSoundViewModel vm);
+
     /// <summary>
     /// Opens a rename dialog.
     /// </summary>
@@ -24,7 +28,8 @@ public interface IDialogService
     /// Opens the premium dialog where users can purchase
     /// ambie plus.
     /// </summary>
-    Task OpenPremiumAsync();
+    /// <param name="launchPromoCodeDirectly">If true, dialog will launch into the promo code page directly.</param>
+    Task OpenPremiumAsync(bool launchPromoCodeDirectly = false);
 
     /// <summary>
     /// Opens dialog regarding missing sounds.
@@ -32,6 +37,11 @@ public interface IDialogService
     /// download missing sounds.
     /// </summary>
     Task<bool> MissingSoundsDialogAsync();
+
+    /// <summary>
+    /// Opens the channel page settings dialog.
+    /// </summary>
+    Task OpenChannelPageSettingsAsync();
 
     /// <summary>
     /// Opens videos menu dialog.
@@ -57,7 +67,7 @@ public interface IDialogService
     /// Returns a real string if the operation was confirmed, the text was valid, and if the text was changed.
     /// </returns>
     Task<string?> EditTextAsync(string prepopulatedText, int? maxSize = null);
-    
+
     /// <summary>
     /// Opens the tutorial dialog.
     /// </summary>

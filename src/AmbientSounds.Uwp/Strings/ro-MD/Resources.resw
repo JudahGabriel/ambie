@@ -369,15 +369,6 @@
   <data name="PriceForLifetime" xml:space="preserve">
     <value>{0} pe viata</value>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>Acceseaza sunete premium, de inalta calitate</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>Descarca economizor de ecran video </value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>Suporta dezvoltarea aplicatiei</value>
-  </data>
   <data name="ThankYouForSub" xml:space="preserve">
     <value>Iti multumesc pentru abonare!</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
@@ -850,5 +841,201 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>Temporizator de oprire</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>Debloca</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>Reglați volumul sunetului</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>Descărcați sunete</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>Ecran întunecat</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>Ajută la somn</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>Prezentare de diapozitive</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>Carusel de imagini</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>Videoclipuri</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>Redă videoclipuri, dacă sunt disponibile</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>Notificare pentru sunete noi</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>Telemetrie</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>Descărcarea videoclipului. Vom fi gata în curând.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>Descărcare</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>Deblocare videoclip</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>Disponibil</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>Inclus</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>Imagini slideshow</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>Fundal video</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>Începeți perioada de încercare gratuită</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} liber, apoi {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>Contactează-ne</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>Contactați-ne dacă aveți feedback, întrebări sau probleme</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>Revendicați-vă cele 7 zile gratuite</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>Încercare gratuită disponibilă</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>Deschide ultimul canal</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>Canale</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>Vizualizați videoclipuri pe ecran complet sau alt conținut vizual pentru a vă ajuta să vă concentrați, să studiați sau să vă relaxați.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>Vezi detalii</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>Activați ceasul</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>Afișați secundele pe ceas</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>Activați cronometrul cu numărătoare inversă</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>Sunete de înaltă calitate, videoclipuri premium și meditații organizate. Acces la tot conținutul viitor. Deblochează totul cu Ambie+ și găsește-ți următoarea ambianță preferată.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>Aceleași beneficii, cost lunar mai mic</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>Obțineți un plan anual - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>Introduceți codul</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>Introduceți codul promoțional</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>Folosește un cod pentru a debloca reduceri pentru Ambie+</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>Prezinte</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>Cea mai lungă serie</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>Ore în această lună</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>Orele de concentrare</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>Total ore</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>Ultimele 7 zile</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>Cele mai redate sunete</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>Folosește Ambie puțin mai mult pentru a vedea mai multe statistici</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Vizualizarea statisticilor de utilizare în Ambie</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>Statistici</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Asigurați-vă că notificările Windows sunt activate pentru Ambie</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>Opțiuni utile</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>Ascundeți canalele</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>Afișați canalele</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>Numărătoarea inversă</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>Niciunul</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>Cronometrul de focalizare este întotdeauna afișat în timpul unei sesiuni de focalizare activă.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>zi</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>oră</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>minut</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>lună</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>săptămână</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>Mod de afișare</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>Cronometru de relaxare</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>Utilizați cronometrul de relaxare pentru a vă ajuta să vă relaxați, să dormiți sau să meditați.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>Informații despre cronometrul de relaxare</value>
   </data>
 </root>

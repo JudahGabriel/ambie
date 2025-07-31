@@ -369,15 +369,6 @@
   <data name="PriceForLifetime" xml:space="preserve">
     <value>{0} طول العمر</value>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>إحصل علي أصوات عالية الجودة ومتميزة</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>تحميل فيديو شاشة التوقف</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>دعم التنمية</value>
-  </data>
   <data name="ThankYouForSub" xml:space="preserve">
     <value>!شكرا على الإشتراك</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
@@ -850,5 +841,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>مؤقت النوم</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>ضبط مستوى الصوت</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>تنزيل الأصوات</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>شاشة مظلمة</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>يساعد في النوم</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>عرض الشرائح</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>دائري من الصور</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>الفيديوات</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>تشغيل مقاطع الفيديو، إذا كانت متوفرة</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>إعلام للأصوات الجديدة</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>قياس البعد</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>تنزيل الفيديو الخاص بك. سنكون مستعدين قريبا.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>فتح الفيديو</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>متوفر</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>متضمن</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>صور عرض الشرائح</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>خلفية الفيديو</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>بدء الإصدار التجريبي المجاني</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} حرا ، ثم {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>ردود الفعل</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>اتصل بنا إذا كانت لديك ملاحظات أو أسئلة أو مشكلات</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>احصل على 7 أيام مجانية</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>نسخة تجريبية مجانية متاحة</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>فتح القناة الأخيرة</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>القنوات</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>اعرض مقاطع الفيديو بملء الشاشة أو أي محتوى مرئي آخر لمساعدتك على التركيز أو الدراسة أو الاسترخاء.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>تمكين الساعة</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>عرض الثواني على مدار الساعة</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>تمكين مؤقت العد التنازلي</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>أصوات عالية الجودة ومقاطع فيديو متميزة وتأملات منسقة. الوصول إلى جميع المحتويات المستقبلية. افتح كل شيء مع Ambie+ ، وابحث عن أجواءك المفضلة التالية.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>نفس المزايا ، تكلفة شهرية أقل</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>احصل على خطة سنوية - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>أدخل الرمز</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>أدخل الرمز الترويجي</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>استخدم رمزا لفتح خصومات Ambie +</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>أطول خط</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>ساعات هذا الشهر</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>ساعات التركيز</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>إجمالي ساعات العمل</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>آخر 7 أيام</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>أعلى الأصوات التي يتم تشغيلها</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>استخدم Ambie أكثر قليلا لعرض المزيد من الإحصائيات</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>عرض إحصائيات الاستخدام الخاصة بك في Ambie</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>احصائيات</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>تأكد من تمكين إشعارات Windows ل Ambie</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>تمكين</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>خيارات مفيدة</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>إخفاء القنوات</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>عرض القنوات</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>العد التنازلي</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>اي</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>يتم عرض مؤقت التركيز البؤري دائما أثناء جلسة التركيز البؤري النشطة.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>يوم</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>ساعة</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>دقيقة</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>أسبوع</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>وضع العرض</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>مؤقت الاسترخاء</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>استخدم مؤقت الاسترخاء لمساعدتك على الاسترخاء أو النوم أو التأمل.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>معلومات مؤقت الاسترخاء</value>
   </data>
 </root>

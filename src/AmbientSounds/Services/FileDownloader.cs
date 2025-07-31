@@ -1,77 +1,69 @@
-﻿using CommunityToolkit.Diagnostics;
+﻿using JeniusApps.Common.Telemetry;
 using MimeTypes;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JeniusApps.Common.Telemetry;
 
-namespace AmbientSounds.Services
+namespace AmbientSounds.Services;
+
+/// <summary>
+/// Downloads and saves sounds.
+/// </summary>
+public class FileDownloader : IFileDownloader
 {
-    /// <summary>
-    /// Downloads and saves sounds.
-    /// </summary>
-    public class FileDownloader : IFileDownloader
+    private readonly HttpClient _client;
+    private readonly IFileWriter _fileWriter;
+    private readonly ITelemetry _telemetry;
+
+    public FileDownloader(
+        HttpClient httpClient,
+        IFileWriter fileWriter,
+        ITelemetry telemetry)
     {
-        private readonly HttpClient _client;
-        private readonly IFileWriter _fileWriter;
-        private readonly ITelemetry _telemetry;
+        _fileWriter = fileWriter;
+        _client = httpClient;
+        _telemetry = telemetry;
+    }
 
-        public FileDownloader(
-            HttpClient httpClient,
-            IFileWriter fileWriter,
-            ITelemetry telemetry)
+    /// <inheritdoc/>
+    public async Task<string> ImageDownloadAndSaveAsync(string? url, string name)
+    {
+        if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
         {
-            Guard.IsNotNull(fileWriter);
-            Guard.IsNotNull(httpClient);
-            Guard.IsNotNull(telemetry);
-            _fileWriter = fileWriter;
-            _client = httpClient;
-            _telemetry = telemetry;
+            return "";
         }
 
-        /// <inheritdoc/>
-        public async Task<string> SoundDownloadAndSaveAsync(string? url, string nameWithExt)
+        HttpResponseMessage response = await _client.GetAsync(url);
+        if (response?.Content is null)
         {
-            if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            _telemetry.TrackEvent("ImageDownloadAndSaveAsyncNullResponse", new Dictionary<string, string>
             {
-                return "";
-            }
+                { "imageUrl", url ?? string.Empty }
+            });
 
-            using var stream = await _client.GetStreamAsync(url);
-            return await _fileWriter.WriteSoundAsync(stream, nameWithExt);
+            return string.Empty;
         }
 
-        /// <inheritdoc/>
-        public async Task<string> ImageDownloadAndSaveAsync(string? url, string name)
+        string contentType = response.Content.Headers?.ContentType?.MediaType ?? string.Empty;
+        string nameWithExt;
+        try
         {
-            if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
-            {
-                return "";
-            }
-
-            HttpResponseMessage response = await _client.GetAsync(url);
-
-            var contentType = response.Content.Headers.ContentType.MediaType;
-            string nameWithExt;
-            try
-            {
-                nameWithExt = name + MimeTypeMap.GetExtension(contentType);
-            }
-            catch (Exception e)
-            {
-                // GetExtension can crash if the contentType has no natural mapping.
-                // This can happen if the image or URL is corrupted.
-                // So we fall back to no extension, which fine.
-                nameWithExt = name;
-                _telemetry.TrackError(e, new Dictionary<string, string>
-                {
-                    { "contentType", contentType },
-                    { "imageUrl", url ?? string.Empty }
-                });
-            }
-            using var stream = await response.Content.ReadAsStreamAsync();
-            return await _fileWriter.WriteImageAsync(stream, nameWithExt);
+            nameWithExt = name + MimeTypeMap.GetExtension(contentType);
         }
+        catch (Exception e)
+        {
+            // GetExtension can crash if the contentType has no natural mapping.
+            // This can happen if the image or URL is corrupted.
+            // So we fall back to no extension, which fine.
+            nameWithExt = name;
+            _telemetry.TrackError(e, new Dictionary<string, string>
+            {
+                { "contentType", contentType },
+                { "imageUrl", url ?? string.Empty }
+            });
+        }
+        using var stream = await response.Content.ReadAsStreamAsync();
+        return await _fileWriter.WriteImageAsync(stream, nameWithExt);
     }
 }

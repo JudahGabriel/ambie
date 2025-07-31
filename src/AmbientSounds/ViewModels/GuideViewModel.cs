@@ -1,4 +1,5 @@
 ﻿using AmbientSounds.Constants;
+using AmbientSounds.Extensions;
 using AmbientSounds.Models;
 using AmbientSounds.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -33,7 +34,7 @@ public partial class GuideViewModel : ObservableObject
         StopCommand = stop;
         PurchaseCommand = purchase;
         Name = assetLocalizer.GetLocalName(onlineGuide);
-        PreviewText = $"{onlineGuide.MinutesLength}m {FocusConstants.DotSeparator} {assetLocalizer.GetLocalDescription(onlineGuide)}";
+        PreviewText = $"{onlineGuide.UpperCaseCulture()} {FocusConstants.DotSeparator} {onlineGuide.MinutesLength}m {FocusConstants.DotSeparator} {assetLocalizer.GetLocalDescription(onlineGuide)}";
         ImagePath = onlineGuide.ImagePath;
         ColourHex = onlineGuide.ColourHex;
         _mixMediaPlayerService = mixMediaPlayerService;
@@ -103,13 +104,13 @@ public partial class GuideViewModel : ObservableObject
 
     public void Initialize()
     {
-        _mixMediaPlayerService.GuidePositionChanged += OnGuidePositionChanged;
+        _mixMediaPlayerService.FeaturedSoundPositionChanged += OnGuidePositionChanged;
         DownloadProgress.ProgressChanged += OnProgressChanged;
     }
 
     public void Uninitialize()
     {
-        _mixMediaPlayerService.GuidePositionChanged -= OnGuidePositionChanged;
+        _mixMediaPlayerService.FeaturedSoundPositionChanged -= OnGuidePositionChanged;
         DownloadProgress.ProgressChanged -= OnProgressChanged;
     }
 
@@ -117,9 +118,9 @@ public partial class GuideViewModel : ObservableObject
     {
         _dispatcherQueue.TryEnqueue(() =>
         {
-            if (_mixMediaPlayerService.CurrentGuideId == OnlineGuide.Id)
+            if (_mixMediaPlayerService.FeaturedSoundId == OnlineGuide.Id)
             {
-                GuidePlaybackProgress = e.TotalSeconds / _mixMediaPlayerService.GuideDuration.TotalSeconds * 100;
+                GuidePlaybackProgress = e.TotalSeconds / _mixMediaPlayerService.FeaturedSoundDuration.TotalSeconds * 100;
             }
             else
             {

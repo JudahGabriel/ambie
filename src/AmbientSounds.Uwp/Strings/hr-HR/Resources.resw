@@ -363,15 +363,6 @@
     <value>{0} mjesečno</value>
     <comment>Price per month, where the parameter {0} is a price like $1.00.</comment>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>Pristupite premium visoko kvalitetnim zvuovkima!</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>Rastući katalog!</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>Podržite razvoj aplikacije!</value>
-  </data>
   <data name="ThankYouForSub" xml:space="preserve">
     <value>Hvala vam na pretplati!</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
@@ -838,5 +829,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>Mjerač vremena spavanja</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>Otključati</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>Podešavanje glasnoće zvuka</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>Preuzimanje zvukova</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>Tamni zaslon</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>Pomaže kod spavanja</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>Dijaprojekcija</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>Vrtuljak slika</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>Reprodukcija videozapisa, ako je dostupna</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>Obavijest o novim zvukovima</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>Telemetrija</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>Preuzimanje videozapisa. Uskoro ćemo biti spremni.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>Učitavanje</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>Otključavanje videozapisa</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>Dostupan</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>Uključen</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>Slike dijaprojekcije</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>Pozadina videozapisa</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>Započnite besplatnu probnu verziju</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} besplatno, a onda {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>Obratite nam se</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>Povratna informacija</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>Obratite nam se ako imate povratne informacije, pitanja ili probleme</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>Zatražite svojih besplatnih 7 dana</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>Dostupna besplatna probna verzija</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>Otvori zadnji kanal</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>Kanalima</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>Pregledajte videozapise preko cijelog zaslona ili drugi vizualni sadržaj koji će vam pomoći da se usredotočite, učite ili opustite.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>Pogledajte detalje</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>Omogući sat</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>Prikaz sekundi na satu</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>Omogućite mjerač vremena</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>Zvukovi visoke kvalitete, vrhunski videozapisi i odabrane meditacije. Pristup svim budućim sadržajima. Otključajte sve uz Ambie+ i pronađite svoj sljedeći omiljeni ambijent.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>Iste prednosti, niži mjesečni troškovi</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>Nabavite godišnji plan - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>Unesite kod</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>Unesite promotivni kod</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>Upotrijebite kod za otključavanje popusta za Ambie+</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>Predati se</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>Najduži niz</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>Sati ovog mjeseca</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>Sati fokusa</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>Ukupno sati</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>Posljednjih 7 dana</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>Najbolje reproducirani zvukovi</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>Koristite Ambie malo više za prikaz više statistika</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Pogledajte statistiku korištenja u Ambie</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>Statistika</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Provjerite jesu li obavijesti sustava Windows omogućene za Ambie</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>Omogućili</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>Korisne opcije</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>Sakrij kanale</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>Prikaži kanale</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>Odbrojavanje</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>Nijedan</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>Mjerač vremena za fokusiranje uvijek se prikazuje tijekom aktivne sesije fokusiranja.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>dan</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>sat</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>minuta</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>mjesec</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>tjedan</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>godina</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>Način prikaza</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>Mjerač vremena za opuštanje</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>Koristite mjerač vremena za opuštanje koji će vam pomoći da se opustite, zaspite ili meditirate.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>Informacije o mjeraču vremena za opuštanje</value>
   </data>
 </root>

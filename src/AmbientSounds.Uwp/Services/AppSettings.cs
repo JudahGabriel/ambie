@@ -24,6 +24,10 @@ public class AppSettings : IAppSettings
         PresenceUrl = resourceLoader.GetString(nameof(PresenceUrl));
         PagesUrl = resourceLoader.GetString(nameof(PagesUrl));
         GuidesUrl = resourceLoader.GetString(nameof(GuidesUrl));
+        ChannelsUrl = resourceLoader.GetString(nameof(ChannelsUrl));
+        NotificationHubName = resourceLoader.GetString(nameof(NotificationHubName));
+        NotificationHubConnectionString = resourceLoader.GetString(nameof(NotificationHubConnectionString));
+        PromoCodesUrl = resourceLoader.GetString(nameof(PromoCodesUrl));
     }
 
     /// <inheritdoc/>
@@ -64,4 +68,16 @@ public class AppSettings : IAppSettings
 
     /// <inheritdoc/>
     public string GuidesUrl { get; set; }
+
+    /// <inheritdoc/>
+    public string ChannelsUrl { get; set; }
+
+    /// <inheritdoc/>
+    public string NotificationHubName { get; }
+
+    /// <inheritdoc/>
+    public string NotificationHubConnectionString { get; }
+
+    /// <inheritdoc/>
+    public string PromoCodesUrl { get; }
 }

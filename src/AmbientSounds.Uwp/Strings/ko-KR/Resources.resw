@@ -367,15 +367,6 @@
     <value>구독해주셔서 감사합니다!</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>고품질의 프리미엄 소리들</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>비디오 화면 보호기</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>개발 지원</value>
-  </data>
   <data name="HelloAgain" xml:space="preserve">
     <value>또 뵙네요 👋🏽</value>
   </data>
@@ -850,5 +841,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>취침 타이머</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>잠금 해제</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>음량 조절하기</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>사운드 다운로드하기</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>어두운 화면</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>수면에 도움</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>슬라이드 쇼</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>이미지 캐러셀</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>동영상</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>가능한 경우 비디오를 재생합니다.</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>새로운 소리에 대한 알림</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>원격</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>동영상 다운로드. 곧 준비하겠습니다.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>비디오 잠금 해제</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>이용할 수 있는</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>포함</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>슬라이드 쇼 이미지</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>비디오 배경</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>무료 평가판 시작</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} 무료, 그 다음에는 {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>문의</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>피드백</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>피드백, 질문 또는 문제가 있는 경우 당사에 문의하십시오.</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>7일 무료 청구</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>무료 평가판 사용 가능</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>마지막 채널 열기</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>채널</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>전체 화면 비디오 또는 기타 시각적 콘텐츠를 보고 집중하거나, 공부하거나, 긴장을 푸는 데 도움이 됩니다.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>세부 정보보기</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>클럭 활성화</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>시계에 초 표시</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>카운트다운 타이머 사용</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>고품질 사운드, 프리미엄 비디오 및 선별된 명상. 향후 모든 콘텐츠에 대한 액세스. Ambie+로 모든 것을 잠금 해제하고 다음에 가장 좋아하는 분위기를 찾아보세요.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>동일한 혜택, 더 낮은 월간 비용</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>연간 요금제 받기 - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>코드 입력</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>프로모션 코드 입력</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>코드를 사용하여 Ambie+ 할인 혜택을 누리세요</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>최장 연승 기록</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>이번 달의 시간</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>포커스 시간</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>총 시간</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>지난 7일</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>가장 많이 재생된 소리</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>더 많은 통계를 보려면 Ambie를 조금 더 사용하십시오.</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Ambie에서 사용 통계 보기</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>통계</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Ambie에 대해 Windows 알림이 활성화되어 있는지 확인합니다.</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>유용한 옵션</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>채널 숨기기</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>채널 표시</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>카운트다운</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>초점 타이머는 활성 초점 세션 중에 항상 표시됩니다.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>하루</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>시</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>달</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>주</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>년</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>디스플레이 모드</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>릴렉스 타이머</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>휴식 타이머를 사용하여 긴장을 풀고, 잠을 자고, 명상하는 데 도움을 줍니다.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>릴렉스 타이머 정보</value>
   </data>
 </root>

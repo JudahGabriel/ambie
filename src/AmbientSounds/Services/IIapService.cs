@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AmbientSounds.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -37,14 +38,14 @@ public interface IIapService
     /// </summary>
     /// <param name="iapId">The IAP ID of the add-on we want to purchase.</param>
     /// <returns>True if the sound is purchased successfully.</returns>
-    Task<bool> BuyAsync(string iapId, bool latest = false);
+    Task<bool> BuyAsync(string iapId, bool latest = false, string? iapIdCacheOverride = null);
 
     /// <summary>
     /// Retrieves the latest price of the item.
     /// </summary>
     /// <param name="iapId">An IAP ID whose price we want to check.</param>
-    /// <returns>The price of the item formatted like $1.99.</returns>
-    Task<string> GetLatestPriceAsync(string iapId);
+    /// <returns>A <see cref="PriceInfo"/> object that contains price data.</returns>
+    Task<PriceInfo> GetLatestPriceAsync(string iapId);
 
     /// <summary>
     /// Returns true if the user has an active subscription for Ambie.
@@ -53,4 +54,9 @@ public interface IIapService
     /// Only looks at subsription IAP, not lifetime durable ownerships.
     /// </remarks>
     Task<bool> IsSubscriptionOwnedAsync();
+
+    /// <summary>
+    /// Determines if premium buttons can be displayed.
+    /// </summary>
+    Task<bool> CanShowPremiumButtonsAsync();
 }

@@ -367,15 +367,6 @@
     <value>Köszönjük a feliratkozását!</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>Prémium, magasabb minőségű hangok!</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>Növekvő katalógus!</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>Fejlesztés támogatása!</value>
-  </data>
   <data name="HelloAgain" xml:space="preserve">
     <value>Üdv újra 👋🏽</value>
   </data>
@@ -838,5 +829,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>Elalvás időzítő</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>Kinyit</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>Állítsa be a hangerőt</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>Hangok letöltése</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>Sötét képernyő</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>Segít az alvásban</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>Diavetítés</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>Képek körhintája</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>Videók</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>Videók lejátszása, ha rendelkezésre állnak</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>Értesítés új hangokról</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>Telemetria</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>A videó letöltése. Hamarosan készen állunk.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>Letöltés</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>Videó feloldása</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>Beszerezhető</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>Tartalmazza</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>Diavetítés képei</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>Videó háttér</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>Ingyenes próbaidőszak megkezdése</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} ingyenes, majd {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>Kapcsolat</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>Visszacsatolás</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>Vegye fel velünk a kapcsolatot, ha visszajelzése, kérdése vagy problémája van</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>Igényelje ingyenes 7 napját</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>Ingyenes próbaverzió érhető el</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>Utolsó csatorna megnyitása</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>Csatornák</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>Teljes képernyős videók vagy más vizuális tartalmak megtekintése az összpontosítás, a tanulás vagy a pihenés elősegítése érdekében.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>Részletek megtekintése</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>Óra engedélyezése</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>Másodpercek kijelzése az órán</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>Visszaszámláló engedélyezése</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>Kiváló minőségű hangok, prémium videók és válogatott meditációk. Hozzáférés minden jövőbeli tartalomhoz. Oldja fel mindezt az Ambie+ segítségével, és találja meg a következő kedvenc környezetét.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>Ugyanazok az előnyök, alacsonyabb havi költség</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>Éves csomag beszerzése - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>Írja be a kódot</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>Írja be a promóciós kódot</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>Kód használata az Ambie+ kedvezményeinek feloldásához</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>Előterjeszt</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>Leghosszabb sorozat</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>Órák ebben a hónapban</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>Fókusz órák</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>Összes óra</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>Az elmúlt 7 nap</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>Leggyakrabban lejátszott hangok</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>Használja az Ambie-t egy kicsit többet, hogy további statisztikákat tekintsen meg</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Tekintse meg használati statisztikáit az Ambie-ben</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>Statisztika</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Győződjön meg arról, hogy a Windows-értesítések engedélyezve vannak az Ambie számára</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>Engedélyez</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>Hasznos lehetőségek</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>Csatornák elrejtése</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>Csatornák megjelenítése</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>Visszaszámlálás</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>Egyik sem</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>A fókuszidőzítő mindig megjelenik aktív fókuszálás közben.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>nap</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>hónap</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>hét</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>év</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>Megjelenítési mód</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>Relaxációs időzítő</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>Használja a relaxációs időzítőt, hogy segítsen ellazulni, aludni vagy meditálni.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>Relaxációs időzítő információk</value>
   </data>
 </root>

@@ -1,8 +1,8 @@
 ﻿using AmbientSounds.Constants;
 using AmbientSounds.Services;
+using JeniusApps.Common.Settings;
 using JeniusApps.Common.Telemetry;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -18,12 +18,7 @@ public sealed partial class HomePage : Page
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        App.Services.GetRequiredService<ITelemetry>().TrackEvent(
-            TelemetryConstants.PageNavTo,
-            new Dictionary<string, string>
-            {
-                { "name", "home" }
-            });
+        App.Services.GetRequiredService<ITelemetry>().TrackPageView(nameof(HomePage));
 
         if (App.Services.GetRequiredService<IUserSettings>().Get<bool>(UserSettingsConstants.ShowHomePageDownloadMessageKey))
         {

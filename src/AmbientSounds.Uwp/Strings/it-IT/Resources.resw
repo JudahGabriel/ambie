@@ -367,15 +367,6 @@
     <value>Grazie per esserti abbonato!</value>
     <comment>Thank you message shown after user purchases a subscription.</comment>
   </data>
-  <data name="SubscriptionText1" xml:space="preserve">
-    <value>Ottieni l'accesso a suoni premium di alta qualità</value>
-  </data>
-  <data name="SubscriptionText2" xml:space="preserve">
-    <value>Scarica il salvaschermo</value>
-  </data>
-  <data name="SubscriptionText3" xml:space="preserve">
-    <value>Supporta lo sviluppo</value>
-  </data>
   <data name="HelloAgain" xml:space="preserve">
     <value>Ciao</value>
   </data>
@@ -850,5 +841,204 @@
   </data>
   <data name="SleepTimerText" xml:space="preserve">
     <value>Timer</value>
+  </data>
+  <data name="UnlockText" xml:space="preserve">
+    <value>Aprire</value>
+  </data>
+  <data name="AdjustSoundVolume" xml:space="preserve">
+    <value>Regolare il volume dell'audio</value>
+  </data>
+  <data name="DownloadSounds" xml:space="preserve">
+    <value>Scarica suoni</value>
+  </data>
+  <data name="DisplayModeDarkScreen" xml:space="preserve">
+    <value>Schermo scuro</value>
+  </data>
+  <data name="DisplayModeDarkScreenDescription" xml:space="preserve">
+    <value>Aiuta a dormire</value>
+  </data>
+  <data name="DisplayModeSlideshow" xml:space="preserve">
+    <value>Galleria di immagini</value>
+  </data>
+  <data name="DisplayModeSlideshowDescription" xml:space="preserve">
+    <value>Carosello di immagini</value>
+  </data>
+  <data name="DisplayModeVideo" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="DisplayModeVideoDescription" xml:space="preserve">
+    <value>Riproduce video, se disponibili</value>
+  </data>
+  <data name="SettingsNotificationsSwitchHeader" xml:space="preserve">
+    <value>Notifica per nuovi suoni</value>
+  </data>
+  <data name="SettingsTelemetrySwitchHeader" xml:space="preserve">
+    <value>Telemetria</value>
+  </data>
+  <data name="DownloadingVideoMessage" xml:space="preserve">
+    <value>Scaricare il video. Saremo pronti al più presto.</value>
+  </data>
+  <data name="DownloadingText" xml:space="preserve">
+    <value>Scaricare</value>
+  </data>
+  <data name="UnlockVideoText" xml:space="preserve">
+    <value>Sblocca video</value>
+  </data>
+  <data name="AvailableText" xml:space="preserve">
+    <value>Disponibile</value>
+  </data>
+  <data name="IncludedText" xml:space="preserve">
+    <value>Incluso</value>
+  </data>
+  <data name="SlideshowImagesText" xml:space="preserve">
+    <value>Immagini della presentazione</value>
+  </data>
+  <data name="VideoBackgroundText" xml:space="preserve">
+    <value>Sfondo del video</value>
+  </data>
+  <data name="StartFreeTrialText" xml:space="preserve">
+    <value>Inizia la prova gratuita</value>
+  </data>
+  <data name="SubWithTrialCaptionTemplate" xml:space="preserve">
+    <value>{0} libero, quindi {1}</value>
+    <comment>E.g. 1 week free, then $1.49/month</comment>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>Contattaci</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>Valutazione</value>
+  </data>
+  <data name="SettingsFeedbackDescription" xml:space="preserve">
+    <value>Contattaci se hai feedback, domande o problemi</value>
+  </data>
+  <data name="FreeTrialTipDescription" xml:space="preserve">
+    <value>Richiedi i tuoi 7 giorni gratuiti</value>
+  </data>
+  <data name="FreeTrialTipTitle" xml:space="preserve">
+    <value>Prova gratuita disponibile</value>
+  </data>
+  <data name="OpenLastChannelText" xml:space="preserve">
+    <value>Apri l'ultimo canale</value>
+  </data>
+  <data name="ChannelsTitleText" xml:space="preserve">
+    <value>Canali</value>
+  </data>
+  <data name="ChannelsSubtitle" xml:space="preserve">
+    <value>Visualizza video a schermo intero o altri contenuti visivi per aiutarti a concentrarti, studiare o rilassarti.</value>
+  </data>
+  <data name="ViewDetailsText" xml:space="preserve">
+    <value>Mostra dettagli</value>
+  </data>
+  <data name="SettingsEnableClockHeader" xml:space="preserve">
+    <value>Abilita orologio</value>
+  </data>
+  <data name="SettingsEnableClockSecondsHeader" xml:space="preserve">
+    <value>Visualizzazione dei secondi sull'orologio</value>
+  </data>
+  <data name="SettingsEnableCountdownHeader" xml:space="preserve">
+    <value>Abilita il timer per il conto alla rovescia</value>
+  </data>
+  <data name="PremiumMessage" xml:space="preserve">
+    <value>Suoni di alta qualità, video premium e meditazioni curate. Accesso a tutti i contenuti futuri. Sblocca tutto con Ambie+ e trova il tuo prossimo ambiente preferito.</value>
+  </data>
+  <data name="AnnualPlanCaption" xml:space="preserve">
+    <value>Stessi vantaggi, costi mensili inferiori</value>
+  </data>
+  <data name="AnnualPlanTitle" xml:space="preserve">
+    <value>Ottieni il piano annuale - {0}</value>
+  </data>
+  <data name="EnterCodePlaceholder" xml:space="preserve">
+    <value>Inserisci il codice</value>
+  </data>
+  <data name="EnterPromoCodeText" xml:space="preserve">
+    <value>Inserisci il codice promozionale</value>
+  </data>
+  <data name="PromoCodeMessage" xml:space="preserve">
+    <value>Usa un codice per sbloccare sconti per Ambie+</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="StatsLongestStreak" xml:space="preserve">
+    <value>Serie più lunga</value>
+  </data>
+  <data name="StatsMonthlyHours" xml:space="preserve">
+    <value>Ore di questo mese</value>
+  </data>
+  <data name="StatsTotalFocusHours" xml:space="preserve">
+    <value>Ore di messa a fuoco</value>
+  </data>
+  <data name="StatsTotalHours" xml:space="preserve">
+    <value>Ore totali</value>
+  </data>
+  <data name="StatsWeeklyHours" xml:space="preserve">
+    <value>Ultimi 7 giorni</value>
+  </data>
+  <data name="TopPlayedSoundsText" xml:space="preserve">
+    <value>Suoni più ascoltati</value>
+  </data>
+  <data name="TopPlayedSoundsPlaceholder" xml:space="preserve">
+    <value>Usa un po' di più Ambie per visualizzare più statistiche</value>
+  </data>
+  <data name="StatsSubtitle" xml:space="preserve">
+    <value>Visualizza le tue statistiche di utilizzo in Ambie</value>
+  </data>
+  <data name="StatsTitleText" xml:space="preserve">
+    <value>Statistiche</value>
+  </data>
+  <data name="OsNotificationHelpMessage" xml:space="preserve">
+    <value>Assicurati che le notifiche di Windows siano abilitate per Ambie</value>
+  </data>
+  <data name="EnableText" xml:space="preserve">
+    <value>Abilitare</value>
+  </data>
+  <data name="StatsPageSettingsHeader" xml:space="preserve">
+    <value>Opzioni utili</value>
+  </data>
+  <data name="ChannelSwitcherHide" xml:space="preserve">
+    <value>Nascondi canali</value>
+  </data>
+  <data name="ChannelSwitcherShow" xml:space="preserve">
+    <value>Mostra canali</value>
+  </data>
+  <data name="CountdownText" xml:space="preserve">
+    <value>Conto alla rovescia</value>
+  </data>
+  <data name="NoneText" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="ChannelTimerFocusDisclaimer" xml:space="preserve">
+    <value>Il timer di messa a fuoco viene sempre visualizzato durante una sessione di messa a fuoco attiva.</value>
+  </data>
+  <data name="DurationUnitDay" xml:space="preserve">
+    <value>giorno</value>
+  </data>
+  <data name="DurationUnitHour" xml:space="preserve">
+    <value>ora</value>
+  </data>
+  <data name="DurationUnitMinute" xml:space="preserve">
+    <value>minuto</value>
+  </data>
+  <data name="DurationUnitMonth" xml:space="preserve">
+    <value>mese</value>
+  </data>
+  <data name="DurationUnitWeek" xml:space="preserve">
+    <value>settimana</value>
+  </data>
+  <data name="DurationUnitYear" xml:space="preserve">
+    <value>anno</value>
+  </data>
+  <data name="DisplayMode" xml:space="preserve">
+    <value>Modalità di visualizzazione</value>
+  </data>
+  <data name="RelaxationTimerText" xml:space="preserve">
+    <value>Timer di rilassamento</value>
+  </data>
+  <data name="RelaxationTimerHelpMessage" xml:space="preserve">
+    <value>Usa il timer di rilassamento per rilassarti, dormire o meditare.</value>
+  </data>
+  <data name="RelaxationTimerHelpButtonAutomationName" xml:space="preserve">
+    <value>Informazioni sul timer di rilassamento</value>
   </data>
 </root>

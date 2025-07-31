@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AmbientSounds.Events;
+using System;
 using System.Threading.Tasks;
 
 namespace AmbientSounds.Services;
@@ -11,7 +12,7 @@ public interface INavigator
     /// <summary>
     /// Raised when the content page was changed.
     /// </summary>
-    event EventHandler<ContentPageType>? ContentPageChanged; 
+    event EventHandler<ContentPageType>? ContentPageChanged;
 
     /// <summary>
     /// The root frame of the app.
@@ -33,7 +34,7 @@ public interface INavigator
     /// <summary>
     /// Navigates to the screensaver.
     /// </summary>
-    void ToScreensaver();
+    void ToScreensaver(ScreensaverArgs? args = null);
 
     /// <summary>
     /// Attempts to navigate back.
@@ -56,7 +57,7 @@ public interface INavigator
     /// </summary>
     /// <param name="closingOverlayMode">Used to determine which page to navigate back to.</param>
     Task CloseCompactOverlayAsync(CompactViewMode closingOverlayMode);
-    
+
     /// <summary>
     /// Navigates to the page corresponding to the given enum.
     /// </summary>
@@ -74,6 +75,8 @@ public enum ContentPageType
     Settings,
     Updates,
     Search,
+    Channels,
+    Stats,
 }
 
 public enum CompactViewMode

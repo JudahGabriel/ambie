@@ -15,6 +15,8 @@ public class TelemetryConstants
     // launch
     private const string Launch = "launch:";
     public const string LaunchViaToast = Launch + "toast";
+    public const string LaunchUserPremiumTier = Launch + "premiumTierUser";
+    public const string LaunchUserFreeTier = Launch + "freeTierUser";
 
     // shell page
     private const string ShellPage = "shellpage:";
@@ -23,6 +25,7 @@ public class TelemetryConstants
     public const string ShuffleClicked = ShellPage + "shuffleClicked";
     public const string UpdateShown = ShellPage + "updateShown";
     public const string UpdateClicked = ShellPage + "updateClicked";
+    public const string FreeTrialTipShown = ShellPage + "freeTrialTipShown";
 
     private const string HomePage = "homepage:";
     public const string DownloadMessageShown = HomePage + "downloadMessageShown";
@@ -45,12 +48,49 @@ public class TelemetryConstants
     public const string BuyDurableClicked = Catalogue + "buyDurableClicked";
     public const string BuyDurablePurchased = Catalogue + "buyDurablePurchased";
     public const string BuyDurableCanceled = Catalogue + "buyDurableCanceled";
+    public const string PreviewPlayed = Catalogue + "previewPlayed";
+
+    // channels
+    private const string Channel = "channel:";
+    public const string ChannelDetailsClicked = Channel + "detailsClicked";
+    public const string ChannelDetailsClosed = Channel + "detailsClosed";
+    public const string ChannelPlayed = Channel + "played";
+    public const string ChannelDownloadClicked = Channel + "downloadClicked";
+    public const string ChannelUnlockClicked = Channel + "unlockClicked";
+
+    // channel viewer
+    private const string ChannelViewer = "channelViewer:";
+    public const string ChannelViewerSettingsClicked = $"{ChannelViewer}settingsClicked";
+    public const string ChannelViewerCountdownkEnabled = $"{ChannelViewer}countdownEnabled";
+    public const string ChannelViewerCountdownDisabled = $"{ChannelViewer}countdownDisabled";
+    public const string ChannelViewerCountdownStarted = $"{ChannelViewer}countdownStarted";
+    public const string ChannelViewerClockEnabled = $"{ChannelViewer}clockEnabled";
+    public const string ChannelViewerClockDisabled = $"{ChannelViewer}clockDisabled";
+    public const string NavigatedToChannelViewer = $"{ChannelViewer}navigatedTo";
+    public const string ChannelViewerFullScreen = $"{ChannelViewer}fullScreen";
+
+    // stats page
+    private const string StatsPage = "statsPage:";
+    public const string StatsLoaded = $"{StatsPage}statsLoaded";
+    public const string StatsSettingsLoaded = $"{StatsPage}settingsLoaded";
+    public const string StatsSettingsQuickResumeEnabled = $"{StatsPage}quickResumeEnabled";
+    public const string StatsSettingsStreakRemindersEnabled = $"{StatsPage}streakRemindersEnabled";
+    public const string StatsSettingsNotificationsLinkClicked = $"{StatsPage}notificationsLinkClicked";
 
     // premium
     private const string Premium = "premium:";
     public const string LifetimeClicked = Premium + "lifetimeClicked";
     public const string LifetimePurchased = Premium + "lifetimePurchased";
     public const string LifetimeCanceled = Premium + "lifetimeCanceled";
+    public const string PremiumAnnualClicked = $"{Premium}annualClicked";
+    public const string PremiumAnnualPurchased = $"{Premium}annualPurchased";
+    public const string PremiumAnnualCanceled = $"{Premium}annualCanceled";
+    public const string PromoCodeBackClicked = $"{Premium}promoCodeBackClicked";
+    public const string PromoCodePageOpened = $"{Premium}promoCodePageOpened";
+    public const string PromoCodeAttempted = $"{Premium}promoCodeAttempted";
+    public const string PromoCodeAddonShown = $"{Premium}promoCodeAddonShown";
+    public const string PromoCodePurchased = $"{Premium}promoCodePurchased";
+    public const string PromoCodeCancelled = $"{Premium}promoCodeCancelled";
 
     // gallery
     private const string Gallery = "gallery:";
@@ -70,16 +110,6 @@ public class TelemetryConstants
     public const string PlaybackTime = Playback + "time";
     public const string PlaybackAutoResume = Playback + "autoResumeTriggered";
 
-    // pages
-    private const string Page = "page:";
-    public const string PageNavTo = Page + "navigatedTo";
-
-    // screensaver
-    private const string Screensaver = "screensaver:";
-    public const string ScreensaverLoaded = Screensaver + "loaded";
-    public const string ScreensaverTriggered = Screensaver + "triggered";
-    public const string ScreensaverFullscreen = Screensaver + "fullscreen";
-
     // mix
     private const string Mix = "mix:";
     public const string MixSaved = Mix + "saved";
@@ -87,6 +117,8 @@ public class TelemetryConstants
     // sharing
     private const string Share = "share:";
     public const string SharePlayed = Share + "soundsPlayed";
+    public const string MissingSoundsMessageClicked = $"{Share}missingSoundsMessageClicked";
+    public const string MissingSoundsMessageShown = $"{Share}missingSoundsMessageShown";
 
     // pin
     private const string Oobe = "oobe:";
@@ -99,7 +131,9 @@ public class TelemetryConstants
     // settings
     private const string Settings = "settings:";
     public const string SettingsModifySubscriptionClicked = Settings + "modifySubscriptionClicked";
+    public const string FeedbackClicked = Settings + "feedbackClicked";
     public const string CheckForUpdatesClicked = Settings + "checkForUpdatesClicked";
+    public const string SettingsRateUsClicked = $"{Settings}rateUsClicked";
 
     // videos
     private const string Videos = "videos:";
@@ -140,4 +174,10 @@ public class TelemetryConstants
     public const string GuideStopped = Guide + "stopped";
     public const string GuideDeleted = Guide + "deleted";
     public const string GuidePurchaseClicked = Guide + "purchaseClicked";
+
+    // xbox
+    private const string Xbox = "xbox:";
+    public const string XboxUnlockVideoClicked = $"{Xbox}unlockVideoClicked";
+    public const string XboxUnlockVideoShown = $"{Xbox}unlockVideoShown";
+    public const string XboxSlideshowModeChanged = $"{Xbox}slideShowModeChanged";
 }

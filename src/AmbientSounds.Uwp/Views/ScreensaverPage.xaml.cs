@@ -1,10 +1,17 @@
 ﻿using AmbientSounds.Constants;
+using AmbientSounds.Events;
+using AmbientSounds.Models;
 using AmbientSounds.Services;
 using AmbientSounds.ViewModels;
+using JeniusApps.Common.Settings;
+using JeniusApps.Common.Telemetry;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.System;
 using Windows.System.Display;
@@ -13,8 +20,8 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using JeniusApps.Common.Telemetry;
 
 #nullable enable
 
@@ -22,20 +29,23 @@ namespace AmbientSounds.Views;
 
 public sealed partial class ScreensaverPage : Page
 {
+    private const int SecondsToHide = 3;
     private readonly DisplayRequest _displayRequest;
     private readonly DispatcherQueue _dispatcherQueue;
+    private readonly SemaphoreSlim _blockPointerLock = new(1, 1);
 
     public ScreensaverPage()
     {
         this.InitializeComponent();
         this.DataContext = App.Services.GetRequiredService<ScreensaverPageViewModel>();
-        IsButtonsHidden = false;
         Queue = DispatcherQueue.GetForCurrentThread();
         SetTimer();
         ViewModel.Loaded += OnViewModelLoaded;
         ViewModel.PropertyChanged += OnViewModelPropertyChanged;
         _displayRequest = new DisplayRequest();
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+
+        ScreensaverControl.ImageChanged += OnImageChanged;
     }
 
     public ScreensaverPageViewModel ViewModel => (ScreensaverPageViewModel)this.DataContext;
@@ -48,18 +58,28 @@ public sealed partial class ScreensaverPage : Page
 
     private DispatcherQueue Queue { get; set; }
 
-    private const int SecondsToHide = 5;
-
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
-        var settings = App.Services.GetRequiredService<IUserSettings>();
-        await ViewModel.InitializeAsync(settings.Get<string>(UserSettingsConstants.LastUsedScreensaverKey));
+        _ = PlayConnectedAnimationAsync();
+        ClockControl.Initialize();
 
+        var settings = App.Services.GetRequiredService<IUserSettings>();
         var telemetry = App.Services.GetRequiredService<ITelemetry>();
-        telemetry.TrackEvent(TelemetryConstants.PageNavTo, new Dictionary<string, string>
+        telemetry.TrackPageView(nameof(ScreensaverPage));
+        telemetry.TrackEvent(TelemetryConstants.NavigatedToChannelViewer, new Dictionary<string, string>
         {
-            { "name", "screensaver" }
+            { "clockEnabled", settings.Get<bool>(UserSettingsConstants.ChannelClockEnabledKey).ToString() },
         });
+
+        if (e.Parameter is ScreensaverArgs args)
+        {
+            await ViewModel.InitializeAsync(args);
+        }
+        else
+        {
+            await ViewModel.InitializeAsync(settings.Get<string>(UserSettingsConstants.LastUsedChannelKey));
+        }
+        await FocusTimerWidget.InitializeAsync(allowSoundPausing: false);
 
         var coreWindow = CoreWindow.GetForCurrentThread();
         coreWindow.KeyDown += CoreWindow_KeyDown;
@@ -78,21 +98,41 @@ public sealed partial class ScreensaverPage : Page
         _displayRequest.RequestActive();
     }
 
+    private async Task PlayConnectedAnimationAsync()
+    {
+        if (ConnectedAnimationService.GetForCurrentView().GetAnimation("channelVideoClicked") is ConnectedAnimation animation)
+        {
+            VideoPlaceholderImage.Visibility = Visibility.Visible;
+            animation.TryStart(VideoPlaceholderImage);
+            _ = VideoShow.StartAsync();
+            await VideoPlaceholderHide.StartAsync();
+            VideoPlaceholderImage.Visibility = Visibility.Collapsed;
+        }
+    }
+
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
+        if (App.Services.GetRequiredService<IMixMediaPlayerService>() is { FeaturedSoundType: FeaturedSoundType.Channel } player)
+        {
+            // This ensures that channel sounds are always paused
+            // when leaving the screensaver page, which is by design.
+            player.StopFeaturedSound();
+        }
+
+        ClockControl.Uninitialize();
+        ScreensaverControl?.Uninitialize();
         ViewModel.Loaded -= OnViewModelLoaded;
         ViewModel.PropertyChanged -= OnViewModelPropertyChanged;
+        ViewModel.Uninitialize();
 
         var coreWindow = CoreWindow.GetForCurrentThread();
         coreWindow.KeyDown -= CoreWindow_KeyDown;
         coreWindow.SizeChanged -= CoreWindow_SizeChanged;
         var navigator = SystemNavigationManager.GetForCurrentView();
         navigator.BackRequested -= OnBackRequested;
-        
-        InactiveTimer?.Stop();
-        CoreWindow.GetForCurrentThread().PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
 
-        SettingsFlyout?.Items?.Clear();
+        StopHideCursorTimer();
+
         _displayRequest.RequestRelease();
     }
 
@@ -103,6 +143,14 @@ public sealed partial class ScreensaverPage : Page
             VideoPlayer.MediaPlayer.IsLoopingEnabled = true;
             VideoPlayer.MediaPlayer.Source = MediaSource.CreateFromUri(ViewModel.VideoSource);
         }
+        else if (e.PropertyName == nameof(ViewModel.DialogOpen))
+        {
+            if (ViewModel.DialogOpen)
+            {
+                StopHideCursorTimer();
+                ShowButtonsAndCursor();
+            }
+        }
     }
 
     private void OnViewModelLoaded(object sender, EventArgs e)
@@ -110,52 +158,6 @@ public sealed partial class ScreensaverPage : Page
         if (!ViewModel.SettingsButtonVisible)
         {
             return;
-        }
-
-        SettingsFlyout.Items.Clear();
-
-        foreach (var item in ViewModel.MenuItems)
-        {
-            MenuFlyoutItem menuItem;
-
-            if (item.IsToggle)
-            {
-                menuItem = new ToggleMenuFlyoutItem()
-                {
-                    IsChecked = item == ViewModel.CurrentSelection
-                };
-            }
-            else
-            {
-                menuItem = new MenuFlyoutItem();
-            }
-
-            menuItem.DataContext = item;
-            menuItem.Text = item.Text;
-            menuItem.Click += OnMenuItemClicked;
-
-            SettingsFlyout.Items.Add(menuItem);
-        }
-    }
-
-    private void OnMenuItemClicked(object sender, RoutedEventArgs e)
-    {
-        if (sender is MenuFlyoutItem flyoutItem &&
-            flyoutItem.DataContext is FlyoutMenuItem dc)
-        {
-
-            if (flyoutItem is ToggleMenuFlyoutItem)
-            {
-                foreach (var item in SettingsFlyout.Items)
-                {
-                    if (item is ToggleMenuFlyoutItem menuItem)
-                    {
-                        menuItem.IsChecked = menuItem == flyoutItem;
-                    }
-                }
-            }
-
-            dc.Command.Execute(dc.CommandParameter);
         }
     }
 
@@ -167,9 +169,13 @@ public sealed partial class ScreensaverPage : Page
 
     private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
     {
-        if (args.VirtualKey == VirtualKey.Escape)
+        if (args.VirtualKey == VirtualKey.Escape && !ViewModel.DialogOpen)
         {
-            GoBack();
+            if (ApplicationView.GetForCurrentView() is { IsFullScreenMode: true } view)
+            {
+                view.ExitFullScreenMode();
+            }
+
             args.Handled = true;
         }
     }
@@ -212,18 +218,13 @@ public sealed partial class ScreensaverPage : Page
         var view = ApplicationView.GetForCurrentView();
         if (view.IsFullScreenMode)
         {
-
             view.ExitFullScreenMode();
         }
         else
         {
             view.TryEnterFullScreenMode();
             var telemetry = App.Services.GetRequiredService<ITelemetry>();
-            telemetry.TrackEvent(TelemetryConstants.ScreensaverFullscreen, new Dictionary<string, string>
-            {
-                { "id", ViewModel.CurrentSelection?.Id ?? "null" },
-                { "name", ViewModel.CurrentSelection?.Text ?? string.Empty }
-            });
+            telemetry.TrackEvent(TelemetryConstants.ChannelViewerFullScreen);
         }
     }
 
@@ -235,29 +236,80 @@ public sealed partial class ScreensaverPage : Page
         InactiveTimer.Tick += OnInactive;
     }
 
-    private void OnInactive(DispatcherQueueTimer t, object sender)
+    private async void OnInactive(DispatcherQueueTimer t, object sender)
     {
-        if (!IsButtonsHidden)
+        if (ViewModel.DialogOpen)
         {
-            GoBackButton.Visibility = Visibility.Collapsed;
-            ActionButtons.Visibility = Visibility.Collapsed;
-            CoreWindow.GetForCurrentThread().PointerCursor = null;
-            IsButtonsHidden = true;
+            return;
         }
 
-        InactiveTimer?.Stop();
+        StopHideCursorTimer();
+
+        if (!IsButtonsHidden)
+        {
+            await _blockPointerLock.WaitAsync();
+            await HideButtonsAndCursorAsync();
+            await Task.Delay(1000);
+            _blockPointerLock.Release();
+        }
+    }
+
+    private async void OnImageChanged(object sender, EventArgs e)
+    {
+        await _blockPointerLock.WaitAsync();
+        await Task.Delay(1000);
+        _blockPointerLock.Release();
     }
 
     private void RootPage_OnPointerMoved(object sender, PointerRoutedEventArgs e)
     {
-        if (IsButtonsHidden)
+        if (ViewModel.DialogOpen ||
+            _blockPointerLock.CurrentCount == 0)
         {
-            GoBackButton.Visibility = Visibility.Visible;
-            ActionButtons.Visibility = Visibility.Visible;
-            CoreWindow.GetForCurrentThread().PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
-            IsButtonsHidden = false;
+            return;
         }
 
-        InactiveTimer?.Start();
+        if (IsButtonsHidden)
+        {
+            ShowButtonsAndCursor();
+        }
+
+        StartHideCursorTimer();
     }
+
+    private void ShowButtonsAndCursor()
+    {
+        IsButtonsHidden = false;
+
+        if (TopPanel.Visibility is Visibility.Collapsed)
+        {
+            TopPanel.Visibility = Visibility.Visible;
+            _ = TopPanelShow.StartAsync();
+        }
+
+        if (VideosGrid.Visibility is Visibility.Collapsed)
+        {
+            VideosGrid.Visibility = Visibility.Visible;
+            _ = BottomPanelShow.StartAsync();
+        }
+    }
+
+    private async Task HideButtonsAndCursorAsync()
+    {
+        IsButtonsHidden = true;
+
+        await Task.WhenAll(FadeOutAsync(TopPanelHide, TopPanel), FadeOutAsync(BottomPanelHide, VideosGrid));
+    }
+
+    private async Task FadeOutAsync(AnimationSet fadeOutAnimation, UIElement element)
+    {
+        if (element.Visibility is Visibility.Visible)
+        {
+            await fadeOutAnimation.StartAsync();
+            element.Visibility = Visibility.Collapsed;
+        }
+    }
+
+    private void StopHideCursorTimer() => InactiveTimer?.Stop();
+    private void StartHideCursorTimer() => InactiveTimer?.Start();
 }

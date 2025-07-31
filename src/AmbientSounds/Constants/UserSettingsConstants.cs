@@ -10,6 +10,11 @@ namespace AmbientSounds.Constants;
 public static class UserSettingsConstants
 {
     /// <summary>
+    /// Unique ID assigned to the local user that persists across sessions.
+    /// </summary>
+    public const string LocalUserIdKey = "LocalUserId";
+
+    /// <summary>
     /// Key to remember if the download message on
     /// home page should be shown or not.
     /// </summary>
@@ -93,6 +98,11 @@ public static class UserSettingsConstants
     public const string LastUsedScreensaverKey = "LastUsedScreensaver";
 
     /// <summary>
+    /// Used to remember what was the last used channel ID.
+    /// </summary>
+    public const string LastUsedChannelKey = "LastUsedChannel";
+
+    /// <summary>
     /// Used to remember if the user has closed the focus help message
     /// at least once.
     /// </summary>
@@ -157,6 +167,46 @@ public static class UserSettingsConstants
     public const string LastUsedContentPageKey = "LastUsedContentPage";
 
     /// <summary>
+    /// Determines the slideshow mode for an xbox device.
+    /// </summary>
+    public const string XboxSlideshowModeKey = "XboxSlideshowMode";
+
+    /// <summary>
+    /// Remembers if the user has seen the free trial tip.
+    /// </summary>
+    public const string HasViewedFreeTrialTipKey = "HasViewedFreeTrialTip";
+
+    /// <summary>
+    /// Remembers the timer mode for the channel page.
+    /// </summary>
+    public const string ChannelTimerModeKey = nameof(ChannelTimerModeKey);
+
+    /// <summary>
+    /// Remembers if the user enabled the channel clock.
+    /// </summary>
+    public const string ChannelClockEnabledKey = "ChannelClockEnabled";
+
+    /// <summary>
+    /// Remembers your last used timer focus length.
+    /// </summary>
+    public const string LastUsedFocusLengthKey = "LastUsedFocusLength";
+
+    /// <summary>
+    /// Remembers your last used timer rest length.
+    /// </summary>
+    public const string LastUsedRestLengthKey = "LastUsedRestLength";
+
+    /// <summary>
+    /// Remembers your last used timer reptitions.
+    /// </summary>
+    public const string LastUsedRepetitionsKey = "LastUsedRepetitions";
+
+    /// <summary>
+    /// Remembers if the user has decided to hide the channel switcher.
+    /// </summary>
+    public const string ChannelSwitcherHidden = nameof(ChannelSwitcherHidden);
+
+    /// <summary>
     ///  Settings defaults.
     /// </summary>
     public static IReadOnlyDictionary<string, object> Defaults { get; } = new Dictionary<string, object>()
@@ -175,13 +225,14 @@ public static class UserSettingsConstants
         { RatingDismissed, DateTime.MinValue },
         { ResumeOnLaunchKey, false },
         { LastUsedScreensaverKey, string.Empty },
+        { LastUsedChannelKey, string.Empty },
         { HasClosedFocusHelpMessageKey, false },
         { HasClosedInterruptionMessageKey, false },
         { RecentFocusKey, Array.Empty<RecentFocusSettings>() },
         { DevicePresenceIdKey, string.Empty },
         { CompactOnFocusKey, true },
         { HasLoadedPackagedSoundsKey, false },
-        { PlayAfterFocusKey, true }, 
+        { PlayAfterFocusKey, true },
         { QuickResumeKey, false },
         { ShowHomePageDownloadMessageKey, true },
         { ActiveStreakKey, 0 },
@@ -189,5 +240,13 @@ public static class UserSettingsConstants
         { StreakReminderLastDateTicksKey, 0L },
         { StreaksReminderEnabledKey, false },
         { LastUsedContentPageKey, string.Empty },
+        { XboxSlideshowModeKey, SlideshowMode.Video.ToString() },
+        { HasViewedFreeTrialTipKey, false },
+        { ChannelTimerModeKey, ChannelTimerMode.None.ToString() },
+        { ChannelClockEnabledKey, false },
+        { LastUsedFocusLengthKey, 0 },
+        { LastUsedRestLengthKey, 0 },
+        { LastUsedRepetitionsKey, 0 },
+        { ChannelSwitcherHidden, false },
     };
 }

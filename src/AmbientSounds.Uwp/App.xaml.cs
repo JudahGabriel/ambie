@@ -2,11 +2,13 @@
 using AmbientSounds.Services;
 using AmbientSounds.Services.Uwp;
 using AmbientSounds.ViewModels;
+using JeniusApps.Common.Settings;
 using JeniusApps.Common.Telemetry;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Uwp.Connectivity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -18,7 +20,6 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.System.Profile;
 using Windows.UI;
-using Windows.UI.Core.Preview;
 using Windows.UI.Notifications;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -49,71 +50,68 @@ sealed partial class App : Application
         this.InitializeComponent();
         this.Suspending += OnSuspension;
         this.Resuming += OnResuming;
+        this.UnhandledException += OnUnhandledException;
         NetworkHelper.Instance.NetworkChanged += OnNetworkChanged;
 
         if (IsTenFoot)
         {
             // Ref: https://docs.microsoft.com/en-us/windows/uwp/xbox-apps/how-to-disable-mouse-mode
-            //this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
-
-            // Ref: https://docs.microsoft.com/en-us/windows/uwp/design/input/gamepad-and-remote-interactions#reveal-focus
-            this.FocusVisualKind = FocusVisualKind.Reveal;
+            this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
         }
     }
 
-    private async void OnNetworkChanged(object sender, EventArgs e)
+    private void OnNetworkChanged(object sender, EventArgs e)
     {
-        var presence = _serviceProvider?.GetService<IPresenceService>();
-        if (presence is null)
-        {
-            return;
-        }
+        //var presence = _serviceProvider?.GetService<IPresenceService>();
+        //if (presence is null)
+        //{
+        //    return;
+        //}
 
-        if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
-        {
-            await presence.EnsureInitializedAsync();
-        }
-        else
-        {
-            await presence.DisconnectAsync();
-        }
+        //if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+        //{
+        //    await presence.EnsureInitializedAsync();
+        //}
+        //else
+        //{
+        //    await presence.DisconnectAsync();
+        //}
     }
 
-    private async void OnResuming(object sender, object e)
+    private void OnResuming(object sender, object e)
     {
-        if (_serviceProvider?.GetService<IPresenceService>() is IPresenceService presenceService)
-        {
-            await presenceService.EnsureInitializedAsync();
-        }
+        //if (_serviceProvider?.GetService<IPresenceService>() is IPresenceService presenceService)
+        //{
+        //    await presenceService.EnsureInitializedAsync();
+        //}
     }
 
     private async void OnSuspension(object sender, SuspendingEventArgs e)
     {
         var deferral = e.SuspendingOperation.GetDeferral();
         _playerTracker?.TrackDuration(DateTimeOffset.Now);
-        if (_serviceProvider?.GetService<IFocusService>() is IFocusService focusService &&
-            focusService.CurrentState == AmbientSounds.Services.FocusState.Active)
+        if (_serviceProvider is { } serviceProvider)
         {
-            // We don't support focus sessions when ambie is suspended,
-            // and we want to make sure notifications are cancelled.
-            // Note: If music is playing, then ambie won't suspend on minimize.
-            focusService.PauseTimer();
-        }
+            var flushTask = serviceProvider.GetRequiredService<ITelemetry>().FlushAsync();
 
-        if (_serviceProvider?.GetService<IFocusNotesService>() is IFocusNotesService notesService)
-        {
-            await notesService.SaveNotesToStorageAsync();
-        }
+            if (serviceProvider.GetRequiredService<IFocusService>() is { } focusService &&
+                focusService.CurrentState == AmbientSounds.Services.FocusState.Active)
+            {
+                // We don't support focus sessions when ambie is suspended,
+                // and we want to make sure notifications are cancelled.
+                // Note: If music is playing, then ambie won't suspend on minimize.
+                focusService.PauseTimer();
+            }
 
-        if (_serviceProvider?.GetService<IPresenceService>() is IPresenceService presenceService)
-        {
-            await presenceService.DisconnectAsync();
+            await serviceProvider.GetRequiredService<IFocusNotesService>().SaveNotesToStorageAsync();
+            //await serviceProvider.GetRequiredService<IPresenceService>().DisconnectAsync();
+            await flushTask;
         }
 
         deferral.Complete();
     }
 
-    public static bool IsDesktop => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Desktop";
+    public static bool IsDesktop => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Desktop" && !IsTenFoot;
 
     public static bool IsTenFoot => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox" || _isTenFootPc;
 
@@ -206,7 +204,6 @@ sealed partial class App : Application
 
     private async Task ActivateAsync(
         bool prelaunched, 
-        IAppSettings? appsettings = null,
         string launchArguments = "")
     {
         // Do not repeat app initialization when the Window already has content
@@ -221,7 +218,7 @@ sealed partial class App : Application
             Window.Current.Content = rootFrame;
 
             // Configure the services for later use
-            _serviceProvider = ConfigureServices(appsettings);
+            _serviceProvider = ConfigureServices();
             rootFrame.ActualThemeChanged += OnActualThemeChanged;
             _userSettings = Services.GetRequiredService<IUserSettings>();
             _userSettings.SettingSet += OnSettingSet;
@@ -234,21 +231,28 @@ sealed partial class App : Application
             // Navigate to the root page if one isn't loaded already
             if (rootFrame.Content is null)
             {
-                ContentPageType? firstPageOverride = LaunchConstants.ToPageType(launchArguments);
-
-                if (firstPageOverride is null &&
-                    _userSettings is { } settings && 
-                    settings.Get<string>(UserSettingsConstants.LastUsedContentPageKey) is { Length: > 0 } contentPage &&
-                    Enum.TryParse(contentPage, out ContentPageType pageType))
+                if (IsTenFoot)
                 {
-                    firstPageOverride = pageType;
+                    rootFrame.Navigate(typeof(Views.XboxShellPage));
                 }
-
-                rootFrame.Navigate(typeof(Views.ShellPage), new ShellPageNavigationArgs
+                else
                 {
-                    FirstPageOverride = firstPageOverride,
-                    LaunchArguments = launchArguments
-                });
+                    ContentPageType? firstPageOverride = LaunchConstants.ToPageType(launchArguments);
+
+                    if (firstPageOverride is null &&
+                        _userSettings is { } settings &&
+                        settings.Get<string>(UserSettingsConstants.LastUsedContentPageKey) is { Length: > 0 } contentPage &&
+                        Enum.TryParse(contentPage, out ContentPageType pageType))
+                    {
+                        firstPageOverride = pageType;
+                    }
+
+                    rootFrame.Navigate(typeof(Views.ShellPage), new ShellPageNavigationArgs
+                    {
+                        FirstPageOverride = firstPageOverride,
+                        LaunchArguments = launchArguments
+                    });
+                }
             }
 
             Window.Current.Activate();
@@ -262,7 +266,6 @@ sealed partial class App : Application
         SetAppRequestedTheme();
         Services.GetRequiredService<Services.INavigator>().RootFrame = rootFrame;
         CustomizeTitleBar(rootFrame.ActualTheme == ElementTheme.Dark);
-        await TryRegisterNotifications();
 
         try
         {
@@ -295,23 +298,33 @@ sealed partial class App : Application
             {
                 bgServices.ToggleStreakReminderTask(true);
             }
+
+            if (userSettings.Get<bool>(UserSettingsConstants.Notifications))
+            {
+                bgServices.TogglePushNotificationRenewalTask(true);
+            }
         }
+
+        _ = Services.GetRequiredService<IPushNotificationRegistrationService>().TryRegisterPushNotificationsAsync();
     }
 
-    private void HandleProtocolLaunch(IProtocolActivatedEventArgs protocolArgs)
+    private async void HandleProtocolLaunch(IProtocolActivatedEventArgs protocolArgs)
     {
         try
         {
             var uri = protocolArgs.Uri;
             var arg = protocolArgs.Uri.Query.Replace("?", string.Empty);
 
-            if (uri.Host is "launch")
+            if (Services.GetService<ProtocolLaunchController>() is { } controller)
             {
-                Services.GetService<ProtocolLaunchController>()?.ProcessLaunchProtocolArguments(arg);
-            }
-            else if (uri.Host is "share" && Services.GetService<ProtocolLaunchController>() is { } controller)
-            {
-                controller.ProcessShareProtocolArguments(arg);
+                if (uri.Host is "share")
+                {
+                    controller.ProcessShareProtocolArguments(arg);
+                }
+                else if (uri.Segments.LastOrDefault()?.Contains("autoplay", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    await controller.ProcessAutoPlayProtocolArgumentsAsync(arg);
+                }
             }
         }
         catch (UriFormatException)
@@ -331,20 +344,6 @@ sealed partial class App : Application
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
         CustomizeTitleBar(sender.ActualTheme == ElementTheme.Dark);
-    }
-
-    private Task TryRegisterNotifications()
-    {
-        var settingsService = App.Services.GetRequiredService<IUserSettings>();
-
-        if (settingsService.Get<bool>(UserSettingsConstants.Notifications))
-        {
-            return new PartnerCentreNotificationRegistrar().Register();
-        }
-        else
-        {
-            return Task.CompletedTask;
-        }
     }
 
     /// <summary>
@@ -397,6 +396,15 @@ sealed partial class App : Application
         else
         {
             ApplicationData.Current.LocalSettings.Values[UserSettingsConstants.Theme] = "default";
+        }
+    }
+
+    private async void OnUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+    {
+        if (_serviceProvider?.GetRequiredService<ITelemetry>() is { } telemetry)
+        {
+            telemetry.TrackError(e.Exception);
+            await telemetry.FlushAsync();
         }
     }
 }
