@@ -5,7 +5,7 @@
     "privacyPolicyUrl": "/blob/main/privacypolicy.md",
     "developerEmail": "jenius_apps@outlook.com",
     "windowsExecutablePackage": {
-        "url": "{{latest-release}}/Ambie_{{version:4}}_x64_ARM64.msixbundle",
+        "url": "{{latest-release}}/Ambie_{{version:4}}_x64_ARM64.msixbundle"
     },
     "storeListings": [
         {
